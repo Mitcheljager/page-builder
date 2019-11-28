@@ -1,28 +1,54 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="board">
+    <editor-bar></editor-bar>
+
+    <sidebar ref="sidebar"></sidebar>
+
+    <main class="main">
+      <block
+        v-for="(block, index) in $root.blocks"
+        v-bind:key="'block_' + index"
+        ref="block"
+        :type="block"
+        :block_id="index"></block>
+    </main>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import { EventBus } from "./components/event_bus"
+  import EditorBar from "./components/editor/editor_bar"
+  import Sidebar from "./components/editor/sidebar"
+  import Block from "./components/block.vue"
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  export default {
+    name: "app",
+    components: {
+      EditorBar,
+      Sidebar,
+      Block
+    },
+    mounted() {
+      console.log(this.$root.blocks)
+    }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  @import "./scss/_general.scss";
+  @import "./scss/elements/_button.scss";
+
+  .board {
+    display: grid;
+    grid-template: "sidebar main";
+    grid-template-columns: 300px auto;
+    height: 100vh;
+  }
+
+  .main {
+    grid-area: main;
+    height: 100%;
+    overflow: auto;
+    padding-top: calc(60px + 3rem);
+  }
 </style>
