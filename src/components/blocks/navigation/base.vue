@@ -25,7 +25,7 @@
 
 <style lang="scss">
   .navigation {
-    background: DarkSlateGray;
-    color: white;
+    background: var(--light);
+    padding: 1rem 0;
   }
 </style>

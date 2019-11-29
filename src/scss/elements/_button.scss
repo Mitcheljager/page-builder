@@ -6,8 +6,25 @@
   background: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
   text-align: center;
+  color: var(--dark);
+  cursor: pointer;
+}
+
+.button:hover,
+.button:active {
+  background: lightgray;
+}
+
+.button--primary {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
 }
 
 .button--active {
   background: lightgray;
+}
+
+.button--inline {
+  display: inline-block;
 }

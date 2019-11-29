@@ -1,19 +1,12 @@
 <template>
-  <div>
-    <inline-svg
-      :src="require(`../../../assets/block_style/${ shape }_${ position }.svg`)"
-      :height="height"
-      width="100%"></inline-svg>
-  </div>
+  <inline-svg
+    :src="require(`../../../assets/block_style/${ shape }_${ position }.svg`)"
+    :height="height"
+    width="100%"></inline-svg>
 </template>
 
 <script>
-  import InlineSvg from "vue-inline-svg"
-
   export default {
-    components: {
-      InlineSvg
-    },
     props: {
       content_key: {
         type: String,
@@ -29,18 +22,15 @@
       }
     },
     computed: {
-      source() {
-        return `../../../assets/block_style/slant_${ this.position }.svg`
-      },
       height() {
-        return this.$root.blockSettings[this.content_key + "_size"] || 40
+        return this.getBlockSetting(this.content_key + "_size", 40)
       },
       shape() {
-        return this.$root.blockSettings[this.content_key] || "slant"
+        return this.getBlockSetting(this.content_key + "_" + this.position, "flat")
       }
     },
     mounted() {
-      
+
     },
     methods: {
 
@@ -50,5 +40,6 @@
 
 <style lang="scss">
   svg {
+    display: block;
   }
 </style>

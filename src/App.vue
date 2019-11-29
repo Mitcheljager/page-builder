@@ -12,6 +12,10 @@
         :type="block"
         :block_id="index"></block>
     </main>
+
+    <transition name="fade-highlight-background">
+      <div class="highlight-background" v-if="$root.selectedKey != ''"></div>
+    </transition>
   </div>
 </template>
 
@@ -27,15 +31,13 @@
       EditorBar,
       Sidebar,
       Block
-    },
-    mounted() {
-      console.log(this.$root.blocks)
     }
   }
 </script>
 
 <style>
   @import "./scss/_general.scss";
+  @import "./scss/general/_form.scss";
   @import "./scss/elements/_button.scss";
 
   .board {
@@ -50,5 +52,27 @@
     height: 100%;
     overflow: auto;
     padding-top: calc(60px + 3rem);
+  }
+
+  .highlight-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    pointer-events: none;
+    background: rgba(0, 0, 0, .25);
+  }
+
+  .fade-highlight-background-enter-active,
+  .fade-highlight-background-leave-active {
+    opacity: 1;
+    transition: opacity .25s;
+  }
+
+  .fade-highlight-background-enter,
+  .fade-highlight-background-leave-to {
+    opacity: 0;
   }
 </style>

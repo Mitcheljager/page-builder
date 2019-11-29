@@ -43,6 +43,6 @@
     border-radius: 99px;
     background: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
-    z-index: 100;
+    z-index: 1000;
   }
 </style>

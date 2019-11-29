@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="(item, index) in parseInt(this.$root.blockSettings[this.content_key] || this.default)" v-bind:key="item + index" :class="wrapper_class">
+    <div v-for="(item, index) in parseInt(getBlockSetting(this.content_key || this.default))" v-bind:key="item + index" :class="wrapper_class">
       <slot></slot>
     </div>
   </div>

@@ -3,8 +3,15 @@
     <h3>Features Settings</h3>
 
     <collapsable title="Content">
-      <layout-changer label="Layout" content_key="layout" :options="{ 'Standard': 'standard', 'Reverse': 'reverse', 'Totally different': 'totally-different' }"></layout-changer>
-      <amount-changer label="Amount of features" content_key="amount" default="2"></amount-changer>
+      <layout-changer
+        label="Layout"
+        content_key="layout"
+        :options="{ 'Standard': 'standard', 'Reverse': 'reverse', 'Cards': 'cards' }"></layout-changer>
+
+      <amount-changer
+        label="Amount of features"
+        content_key="amount"
+        default="2"></amount-changer>
     </collapsable>
 
     <collapsable title="Background">
@@ -15,18 +22,8 @@
 
 <script>
   import { EventBus } from "../../event_bus"
-  import AmountChanger from "../inputs/amount_changer"
-  import LayoutChanger from "../inputs/layout_changer"
-  import BackgroundSettings from "./content_type/background"
-  import Collapsable from "../elements/collapsable"
 
   export default {
-    components: {
-      AmountChanger,
-      LayoutChanger,
-      BackgroundSettings,
-      Collapsable
-    },
     props: [],
     data() {
       return {

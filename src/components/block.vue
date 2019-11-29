@@ -2,9 +2,9 @@
   <section class="block" @click="swapActiveBlock()">
     <shape :content_key="block_id + '_shape'" v-if="isBackgroundEnabled" position="top"></shape>
 
-    <div v-bind:is="type" :type="type"></div>
+    <div v-bind:is="type" :type="type" :block_id="block_id" :style="`color: var(--${textColor})`"></div>
 
-    <background content_key="1" v-if="isBackgroundEnabled"></background>
+    <background :content_key="block_id + '_background'" v-if="isBackgroundEnabled"></background>
 
     <shape :content_key="block_id + '_shape'" v-if="isBackgroundEnabled" position="bottom"></shape>
 
@@ -45,7 +45,10 @@
     },
     computed: {
       isBackgroundEnabled() {
-        return this.$root.blockSettings[this.block_id + '_enable_background'] || false
+        return this.getBlockSetting(this.block_id + "_enable_background", false)
+      },
+      textColor() {
+        return this.getBlockSetting(this.block_id + "_text_color", "dark")
       }
     },
     mounted() {
@@ -55,14 +58,15 @@
       swapActiveBlock() {
         this.$root.currentlyActiveBlock = this.block_id
         this.$root.currentlyActiveBlockType = this.type
+        this.resetSelected()
 
-        const blocks = this.$root.$children[0].$refs["block"] // Can this be nicer?
+        const blocks = this.getRootElements("block")
         blocks.forEach(block => block.active = false)
 
         this.active = true
 
-        const sidebar = this.$root.$children[0].$refs["sidebar"]
-        sidebar.activeMenu = 'block'
+        const sidebar = this.getRootElements("sidebar")
+        sidebar.activeMenu = "block"
       }
     }
   }
@@ -75,10 +79,10 @@
 
   .block__active-marker {
     position: absolute;
-    top: 0;
+    top: -3px;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% + 6px);
     box-shadow: inset 0 0 0 3px SkyBlue;
     pointer-events: none;
     z-index: 10;

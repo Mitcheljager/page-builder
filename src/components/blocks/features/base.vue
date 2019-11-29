@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container offset">
     <h2><center>Features</center></h2>
 
     <div :class="'features--' + layout">
@@ -7,6 +7,8 @@
         :is="layout"
         v-for="(item, index) in parseInt($root.blockSettings['amount'] || 2)"
         :key="item + index"
+        :block_id="block_id"
+        :repeatable_id="index"
         class="grid-columns"></div>
     </div>
   </div>
@@ -15,15 +17,15 @@
 <script>
   import Standard from "./content/standard"
   import Reverse from "./content/reverse"
-  import TotallyDifferent from "./content/totally-different"
+  import Cards from "./content/cards"
 
   export default {
     components: {
       Standard,
       Reverse,
-      TotallyDifferent
+      Cards
     },
-    props: [],
+    props: ["block_id"],
     data() {
       return {
 
@@ -56,7 +58,7 @@
     }
   }
 
-  .features--totally-different {
+  .features--cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 3rem;

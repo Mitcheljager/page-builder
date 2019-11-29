@@ -1,5 +1,5 @@
 <template>
-  <div class="amount-changer">
+  <div class="amount-changer sidebar-item">
     <label v-html="label"></label>
     <input type="number" :value="value" min="1" max="6" @change="changeAmount()" ref="input">
   </div>
@@ -22,15 +22,18 @@
     },
     data() {
       return {
-        value: this.$root.blockSettings[this.content_key] || this.default
+        value: this.getBlockSetting(this.content_key, this.default)
       }
+    },
+    computed: {
+
     },
     mounted() {
 
     },
     methods: {
       changeAmount() {
-        this.$set(this.$root.blockSettings, this.content_key, this.$refs.input.value)
+        this.setBlockSetting(this.content_key, this.$refs.input.value)
       }
     }
   }

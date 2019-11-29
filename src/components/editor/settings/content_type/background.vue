@@ -1,27 +1,52 @@
 <template>
   <div>
-    Background Settings
-
-    <div>
+    <div class="sidebar-item">
       <label>
         Enable Background
-        <input type="checkbox" ref="enable-switch" @change="toggleBackground()" :checked="state">
+
+        <input
+          type="checkbox"
+          ref="enable-switch"
+          @change="toggleBackground()"
+          :checked="getBlockSetting(keyForActiveBlock('enable_background'), false)">
       </label>
     </div>
 
-    <div v-if="state">
-      <custom-select label="Shape">
+    <div v-if="isBlockSetting(keyForActiveBlock('enable_background'), true)">
+      <div class="sidebar-item">
+        Color
+
+        <block-setting-button
+          v-for="(color, index) in colors"
+          :key="index"
+          :label="color"
+          :content_key="keyForActiveBlock('background_color')"
+          :value="color"></block-setting-button>
+      </div>
+
+      <div class="sidebar-item">
+        Text color
+
+        <block-setting-button
+          v-for="(color, index) in textColors"
+          :key="index"
+          :label="color"
+          :content_key="keyForActiveBlock('text_color')"
+          :value="color"></block-setting-button>
+      </div>
+
+      <custom-select v-for="(position, index) in ['top', 'bottom']" :key="index" :label="position + ' shape'">
         <template #selected>
           <inline-svg
-            :src="require(`../../../../assets/block_style/${ selectedShape }_top.svg`)"
+            :src="require(`../../../../assets/block_style/${ getBlockSetting(`${ $root.currentlyActiveBlock }_shape_${ position }`, 'flat') }_${ position }.svg`)"
             width="100%"
             height="40px"></inline-svg>
         </template>
 
         <template #content>
-          <div v-for="(shape, index) in shapes" :key="index" class="custom-select__item" @click="selectShape(index)">
+          <div v-for="(shape, index) in shapes" :key="index" class="custom-select__item" @click="selectShape(index, position)">
             <inline-svg
-              :src="require(`../../../../assets/block_style/${ shape }_top.svg`)"
+              :src="require(`../../../../assets/block_style/${ shape }_${ position }.svg`)"
               width="100%"
               height="40px"></inline-svg>
           </div>
@@ -30,53 +55,41 @@
 
       <div>
         Shape height
-        <input type="range" name="points" min="40" max="200" value="40" @input="changeShapeSize()">
+
+        <input type="range" min="40" max="200"
+          :value="getBlockSetting(keyForActiveBlock('shape_size'), 40)"
+          @input="setBlockSetting(keyForActiveBlock('shape_size'), $event.target.value)">
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import CustomSelect from "../../inputs/custom_select"
-  import InlineSvg from "vue-inline-svg"
-
   export default {
-    components: {
-      CustomSelect,
-      InlineSvg
-    },
     props: [],
     data() {
       return {
-        shapes: ["slant", "layered", "playful"],
-        selectedShape: "slant"
-      }
-    },
-    computed: {
-      state() {
-        return this.$root.blockSettings[this.$root.currentlyActiveBlock + '_enable_background']
+        shapes: ["flat", "slant", "layered", "playful"],
+        colors: ["light", "dark", "primary", "accent"],
+        textColors: ["dark", "light"]
       }
     },
     mounted() {
     },
     methods: {
       toggleBackground() {
-        const key = this.$root.currentlyActiveBlock + "_enable_background"
+        const key = this.keyForActiveBlock("enable_background")
         const state = this.$root.blockSettings[key]
 
-        this.$set(this.$root.blockSettings, key, !state)
-      },
-      changeShapeSize() {
-        const key = this.$root.currentlyActiveBlock + "_shape_size"
-        const size = event.target.value
+        this.setBlockSetting(key, !state)
 
-        this.$set(this.$root.blockSettings, key, size)
+        if (state) this.setBlockSetting(this.keyForActiveBlock('text_color'), "dark")
       },
-      selectShape(index) {
-        const key = this.$root.currentlyActiveBlock + "_shape"
+      selectShape(index, position) {
+        const key = this.keyForActiveBlock("shape_" + position)
         const selected = this.shapes[index]
 
-        this.$set(this.$root.blockSettings, key, selected)
+        this.setBlockSetting(key, selected)
         this.selectedShape = selected
       }
     }

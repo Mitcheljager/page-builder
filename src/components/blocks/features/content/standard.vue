@@ -5,15 +5,19 @@
     </div>
 
     <div class="grid-columns__item">
-      <p>I am text</p>
+      <text-content :block_id="block_id" :repeatable_id="repeatable_id"></text-content>
     </div>
   </div>
 </template>
 
 <script>
+  import TextContent from "./text"
 
   export default {
-    props: [],
+    components: {
+      TextContent
+    },
+    props: ["block_id", "repeatable_id"],
     data() {
       return {
 

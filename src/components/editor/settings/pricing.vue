@@ -1,6 +1,10 @@
 <template>
   <div>
     <h3>Pricing Settings</h3>
+
+    <collapsable title="Background">
+      <background-settings content_key="background"></background-settings>
+    </collapsable>
   </div>
 </template>
 

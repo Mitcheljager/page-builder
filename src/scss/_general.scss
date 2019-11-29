@@ -2,6 +2,13 @@
   box-sizing: border-box;
 }
 
+:root {
+  --light: #f8f8f8;
+  --dark: #111;
+  --primary: #FF7675;
+  --accent: #436FF5
+}
+
 html,
 body {
   padding: 0;
@@ -9,8 +16,18 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+h2 {
+  font-size: 32px;
+  margin: 0 0 3rem;
+}
+
 .container {
   max-width: 900px;
   padding: 0 1.5rem;
   margin: 0 auto;
+}
+
+.offset {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="background"></div>
+    <div class="background" :style="`background: var(--${color})`"></div>
   </div>
 </template>
 
@@ -14,6 +14,11 @@
     },
     data() {
       return {
+      }
+    },
+    computed: {
+      color() {
+        return this.getBlockSetting(this.content_key + "_color", "light")
       }
     },
     mounted() {

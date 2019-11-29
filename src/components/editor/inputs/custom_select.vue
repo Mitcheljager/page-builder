@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sidebar-item">
     <span @click="toggle()" v-html="label"></span>
 
     <div @click="toggle()" class="custom-select">
@@ -26,12 +26,21 @@
       }
     },
     mounted() {
-
+      
     },
     methods: {
       toggle() {
         this.active = !this.active
+
+        if (this.active) {
+          setTimeout(() => { document.addEventListener("click", this.toggle)}, 1)
+        } else {
+          document.removeEventListener("click", this.toggle)
+        }
       }
+    },
+    events: {
+
     }
   }
 </script>
@@ -46,8 +55,9 @@
     cursor: pointer;
 
     svg {
-      path {
-        fill: lightgray;
+      path,
+      rect {
+        fill: lightgray !important;
       }
     }
   }
@@ -59,6 +69,7 @@
     width: 100%;
     background: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+    z-index: 10;
   }
 
   .custom-select__item {

@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-changer">
+  <div class="layout-changer sidebar-item">
     <label v-html="label"></label>
 
     <div>
@@ -27,7 +27,11 @@
     },
     data() {
       return {
-        value: this.$root.blockSettings[this.content_key] || Object.values(this.options)[0]
+      }
+    },
+    computed: {
+      value() {
+        return this.getBlockSetting(this.content_key, Object.values(this.options)[0])
       }
     },
     mounted() {
@@ -35,7 +39,7 @@
     },
     methods: {
       changeLayout() {
-        this.$set(this.$root.blockSettings, this.content_key, this.$refs.input.value)
+        this.setBlockSetting(this.content_key, this.$refs.input.value)
       }
     }
   }
