@@ -1,8 +1,10 @@
 <template>
-  <div
-    :class="active ? 'is-highlighted' : ''"
-    @click="toggleSettings()"
-    v-html="getBlockSetting(content_key + '_label', default_label)"></div>
+  <div @click="toggleSettings()" :class="active ? 'is-highlighted' : ''" class="form-group">
+    <div
+      class="button button--inline"
+      :class="active ? 'is-highlighted' : ''"
+      v-html="getBlockSetting(content_key + '_label', default_label)"></div>
+  </div>
 </template>
 
 <script>
@@ -30,9 +32,9 @@
     },
     methods: {
       toggleSettings() {
-        if (this.active) return 
-
-        this.setSelected(this.content_key, "button")
+        if (this.active) return
+        
+        this.setSelected(this.content_key, "submit")
         this.hightlightMe()
       },
       hightlightMe() {

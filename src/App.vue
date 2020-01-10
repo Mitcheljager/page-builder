@@ -14,7 +14,7 @@
     </main>
 
     <transition name="fade-highlight-background">
-      <div class="highlight-background" v-if="$root.selectedKey != ''"></div>
+      <div class="highlight-background" v-if="highlightActive"></div>
     </transition>
   </div>
 </template>
@@ -24,6 +24,7 @@
   import EditorBar from "./components/editor/editor_bar"
   import Sidebar from "./components/editor/sidebar"
   import Block from "./components/block.vue"
+  import _ from "lodash"
 
   export default {
     name: "app",
@@ -31,6 +32,16 @@
       EditorBar,
       Sidebar,
       Block
+    },
+    data() {
+      return {
+        highlightActive: false
+      }
+    },
+    watch: {
+      "$root.selectedKey": _.debounce(function(value) {
+        this.highlightActive = this.$root.selectedKey != ''
+      }, 10)
     }
   }
 </script>

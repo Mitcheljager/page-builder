@@ -1,6 +1,6 @@
 <template>
   <div class="container offset">
-    <h2><center>Features</center></h2>
+    <h2><center><editable-text :content_key="`${ block_id }_title`" default_label="Features"></editable-text></center></h2>
 
     <div :class="'features--' + layout">
       <div

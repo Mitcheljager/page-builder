@@ -16,16 +16,22 @@
   import NavigationSettings from "./settings/navigation"
   import FeaturesSettings from "./settings/features"
   import PricingSettings from "./settings/pricing"
+  import PaymentFormSettings from "./settings/payment_form"
   import ThemeSettings from "./settings/theme"
   import ButtonSettings from "./settings/button"
+  import InputSettings from "./settings/input"
+  import SubmitSettings from "./settings/submit"
 
   export default {
     components: {
       NavigationSettings,
       FeaturesSettings,
       PricingSettings,
+      PaymentFormSettings,
       ThemeSettings,
-      ButtonSettings
+      ButtonSettings,
+      InputSettings,
+      SubmitSettings
     },
     props: [],
     data() {
@@ -39,6 +45,8 @@
     methods: {
       setActiveMenu(type) {
         this.activeMenu = type
+        this.$root.selectedType = ""
+        this.$root.selectedKey = ""
       }
     }
   }

@@ -19,12 +19,14 @@
   import Navigation from "./blocks/navigation/base"
   import Features from "./blocks/features/base"
   import Pricing from "./blocks/pricing/base"
+  import PaymentForm from "./blocks/payment_form/base"
 
   export default {
     components: {
       Navigation,
       Features,
       Pricing,
+      PaymentForm,
       Background,
       Shape
     },
