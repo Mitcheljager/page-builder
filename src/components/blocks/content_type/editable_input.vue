@@ -1,6 +1,8 @@
 <template>
   <div @click="toggleSettings()" :class="active ? 'is-highlighted' : ''" class="form-group">
-    <label v-html="getBlockSetting(content_key + '_label', default_label)" v-if="default_label"></label>
+    <label v-html="getBlockSetting(content_key + '_label', default_label)" v-if="default_label || getBlockSetting(content_key + '_label')"></label>
+
+    <small class="form-hint" v-if="default_description || getBlockSetting(content_key + '_description')" v-html="getBlockSetting(content_key + '_description', default_description)"></small>
 
     <input
       :class="active ? 'is-highlighted' : ''"
@@ -20,6 +22,9 @@
         type: String
       },
       default_placeholder: {
+        type: String
+      },
+      default_description: {
         type: String
       },
       input_type: {

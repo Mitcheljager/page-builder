@@ -8,7 +8,12 @@
     </label>
 
     <label class="sidebar-item">
-      Placeholder Text
+      Input Description
+      <input type="text" ref="input-description">
+    </label>
+
+    <label class="sidebar-item">
+      Input Placeholder
       <input type="text" ref="input-placeholder">
     </label>
 
@@ -25,7 +30,8 @@
       return {
         content_key: this.$root.selectedKey,
         label: this.getBlockSetting(this.content_key + "_label") || "",
-        placeholder: this.getBlockSetting(this.content_key + "_placeholder") || ""
+        placeholder: this.getBlockSetting(this.content_key + "_placeholder") || "",
+        description: this.getBlockSetting(this.content_key + "_placeholder") || ""
       }
     },
     mounted() {
@@ -34,9 +40,11 @@
       saveButton() {
         this.label = this.$refs["input-label"].value
         this.placeholder = this.$refs["input-placeholder"].value
+        this.description = this.$refs["input-description"].value
 
         this.setBlockSetting(this.content_key + "_label", this.label)
         this.setBlockSetting(this.content_key + "_placeholder", this.placeholder)
+        this.setBlockSetting(this.content_key + "_description", this.description)
       }
     }
   }
