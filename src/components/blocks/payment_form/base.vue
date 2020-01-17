@@ -1,19 +1,19 @@
 <template>
-  <div class="container">
-    <h2 class="offset"><center><editable-text :content_key="`${ block_id }_title`" default_label="Payment form"></editable-text></center></h2>
-
-    <input-form :block_id="`${ block_id }_form`"></input-form>
-
-    <div class="offset"></div>
+  <div>
+    <div
+      :is="layout"
+      :block_id="`${ block_id }_form`"></div>
   </div>
 </template>
 
 <script>
-  import InputForm from "./content/form"
+  import Basic from "./content/basic"
+  import Columns from "./content/columns"
 
   export default {
     components: {
-      InputForm
+      Basic,
+      Columns
     },
     props: ["block_id"],
     data() {
@@ -22,7 +22,9 @@
       }
     },
     computed: {
-
+      layout() {
+        return this.getBlockSetting(this.block_id + "_layout") || "basic"
+      }
     },
     methods: {
 

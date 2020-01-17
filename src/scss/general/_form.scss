@@ -1,12 +1,31 @@
-input:not([type="checkbox"]) {
+input:not([type="checkbox"]),
+select,
+textarea {
   width: 100%;
   padding: .5rem .75rem;
   border: 1px solid lightgray;
+  background: white;
+  border-radius: 0;
+}
+
+input:active,
+input:focus,
+select:active,
+select:focus {
+  outline: none;
 }
 
 input::placeholder {
   color: gray;
   font-style: italic;
+}
+
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 2.5rem;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='gray'><polygon points='0,0 10,0 5,5'/></svg>") no-repeat white;
+  background-position: right .5rem top .75rem;
 }
 
 label {
@@ -15,7 +34,7 @@ label {
 }
 
 .form-group {
-  padding: .25rem 3rem;
+  padding: 0;
 }
 
 .form-hint {
@@ -24,4 +43,25 @@ label {
   font-style: italic;
   font-size: 12px;
   margin: 0 0 .5rem;
+}
+
+.checkbox {
+  display: grid;
+  grid-template-columns: .75rem auto;
+  grid-gap: .5rem;
+}
+
+.checkbox input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: .75rem;
+  height: .75rem;
+  border: 1px solid gray;
+}
+
+.checkbox input:checked {
+  background: blue;
+}
+
+.checkbox label {
 }

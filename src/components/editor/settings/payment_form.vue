@@ -1,6 +1,13 @@
 <template>
   <div>
-    <h3>Pricing Settings</h3>
+    <h3>Payment Form Settings</h3>
+
+    <collapsable title="Content">
+      <layout-changer
+        label="Layout"
+        :content_key="this.$root.currentlyActiveBlock + '_layout'"
+        :options="{ 'Basic': 'basic', 'Columns': 'columns' }"></layout-changer>
+    </collapsable>
 
     <collapsable title="Background">
       <background-settings content_key="background"></background-settings>

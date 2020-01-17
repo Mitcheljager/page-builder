@@ -20,6 +20,8 @@
   import ThemeSettings from "./settings/theme"
   import ButtonSettings from "./settings/button"
   import InputSettings from "./settings/input"
+  import SelectSettings from "./settings/select"
+  import CheckboxSettings from "./settings/checkbox"
   import SubmitSettings from "./settings/submit"
 
   export default {
@@ -31,6 +33,8 @@
       ThemeSettings,
       ButtonSettings,
       InputSettings,
+      CheckboxSettings,
+      SelectSettings,
       SubmitSettings
     },
     props: [],
