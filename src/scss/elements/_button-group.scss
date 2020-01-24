@@ -1,0 +1,16 @@
+.button-group {
+  display: flex;
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+}
+
+.button-group .button {
+  width: 100%;
+  border-radius: 0;
+  border: 0;
+  border-right: 1px solid $border-color;
+}
+
+.button-group .button:last-child {
+  border-right: 0;
+}

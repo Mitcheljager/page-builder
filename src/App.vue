@@ -1,10 +1,8 @@
 <template>
   <div class="board">
-    <editor-bar></editor-bar>
-
     <sidebar ref="sidebar"></sidebar>
 
-    <main class="main">
+    <main class="main" :style="themeVariables">
       <block
         v-for="(block, index) in $root.blocks"
         v-bind:key="'block_' + index"
@@ -21,7 +19,6 @@
 
 <script>
   import { EventBus } from "./components/event_bus"
-  import EditorBar from "./components/editor/editor_bar"
   import Sidebar from "./components/editor/sidebar"
   import Block from "./components/block.vue"
   import _ from "lodash"
@@ -29,13 +26,20 @@
   export default {
     name: "app",
     components: {
-      EditorBar,
       Sidebar,
       Block
     },
     data() {
       return {
         highlightActive: false
+      }
+    },
+    computed: {
+      themeVariables() {
+        return {
+          "--accent": this.$root.themes[this.$root.activeTheme].colorAccent,
+          "--secondary": this.$root.themes[this.$root.activeTheme].colorSecondary
+        }
       }
     },
     watch: {
@@ -46,15 +50,17 @@
   }
 </script>
 
-<style>
+<style lang="scss">
+  @import "./scss/_variables.scss";
   @import "./scss/_general.scss";
   @import "./scss/general/_form.scss";
   @import "./scss/elements/_button.scss";
+  @import "./scss/elements/_button-group.scss";
 
   .board {
     display: grid;
     grid-template: "sidebar main";
-    grid-template-columns: 300px auto;
+    grid-template-columns: 375px auto;
     height: 100vh;
   }
 
@@ -62,7 +68,6 @@
     grid-area: main;
     height: 100%;
     overflow: auto;
-    padding-top: calc(60px + 3rem);
   }
 
   .highlight-background {

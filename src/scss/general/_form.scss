@@ -2,9 +2,9 @@ input:not([type="checkbox"]),
 select,
 textarea {
   width: 100%;
-  padding: .5rem .75rem;
-  border: 1px solid lightgray;
-  background: white;
+  padding: .75rem .75rem;
+  border: 1px solid $border-color;
+  background: $input-background;
   border-radius: 0;
 }
 
@@ -35,6 +35,12 @@ label {
 
 .form-group {
   padding: 0;
+}
+
+.form-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
 }
 
 .form-hint {

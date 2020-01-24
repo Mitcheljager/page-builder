@@ -6,7 +6,7 @@
       <layout-changer
         label="Layout"
         :content_key="this.$root.currentlyActiveBlock + '_layout'"
-        :options="{ 'Basic': 'basic', 'Columns': 'columns' }"></layout-changer>
+        :options="{ 'Columns': 'columns', 'Basic': 'basic' }"></layout-changer>
     </collapsable>
 
     <collapsable title="Background">

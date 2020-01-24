@@ -51,7 +51,7 @@ Vue.mixin({
     },
     setSelected(content_key, type) {
       this.resetSelected()
-      
+
       setTimeout(() => {
         this.$root.selectedKey = content_key
         this.$root.selectedType = type
@@ -81,7 +81,21 @@ Vue.mixin({
 new Vue({
   render: h => h(App),
   data: {
-    blocks: ["navigation", "payment-form", "features", "pricing"],
+    themes: [{
+        name: "Main brand",
+        colorAccent: "#FF7675",
+        colorSecondary: "#436FF5",
+        fontHeadline: "Raleway",
+        fontBody: "Merriweather"
+    }, {
+        name: "Another theme",
+        colorAccent: "#00FF00",
+        colorSecondary: "#FF00FF",
+        fontHeadline: "Merriweather",
+        fontBody: "Raleway"
+    }],
+    activeTheme: 0,
+    blocks: ["payment-form"],
     currentlyActiveBlock: "",
     currentlyActiveBlockType: "navigation",
     blockSettings: { },

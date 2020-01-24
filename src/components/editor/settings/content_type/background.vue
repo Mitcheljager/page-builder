@@ -16,23 +16,27 @@
       <div class="sidebar-item">
         Color
 
-        <block-setting-button
-          v-for="(color, index) in colors"
-          :key="index"
-          :label="color"
-          :content_key="keyForActiveBlock('background_color')"
-          :value="color"></block-setting-button>
+        <div class="button-group">
+          <block-setting-button
+            v-for="(color, index) in colors"
+            :key="index"
+            :label="color"
+            :content_key="keyForActiveBlock('background_color')"
+            :value="color"></block-setting-button>
+        </div>
       </div>
 
       <div class="sidebar-item">
         Text color
 
-        <block-setting-button
-          v-for="(color, index) in textColors"
-          :key="index"
-          :label="color"
-          :content_key="keyForActiveBlock('text_color')"
-          :value="color"></block-setting-button>
+        <div class="button-group">
+          <block-setting-button
+            v-for="(color, index) in textColors"
+            :key="index"
+            :label="color"
+            :content_key="keyForActiveBlock('text_color')"
+            :value="color"></block-setting-button>
+        </div>
       </div>
 
       <custom-select v-for="(position, index) in ['top', 'bottom']" :key="index" :label="position + ' shape'">
@@ -70,7 +74,7 @@
     data() {
       return {
         shapes: ["flat", "slant", "layered", "playful"],
-        colors: ["light", "dark", "primary", "accent"],
+        colors: ["light", "dark", "accent", "secondary"],
         textColors: ["dark", "light"]
       }
     },

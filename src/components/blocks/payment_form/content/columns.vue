@@ -61,10 +61,10 @@
 
   .block {
     padding: 1.75rem;
-    border: 1px solid lightgray;
     border-radius: 5px;
     background: white;
     font-size: 13px;
+    box-shadow: 1px 3px 8px rgba(0, 0, 0, .05);
   }
 
   .gap {

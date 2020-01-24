@@ -23,7 +23,7 @@
     },
     computed: {
       layout() {
-        return this.getBlockSetting(this.block_id + "_layout") || "basic"
+        return this.getBlockSetting(this.block_id + "_layout") || "columns"
       }
     },
     methods: {

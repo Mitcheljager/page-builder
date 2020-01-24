@@ -1,28 +1,26 @@
 .button {
   display: block;
-  padding: .25rem .5rem;
-  border: 1px solid gray;
+  padding: .5rem;
+  border: 1px solid $border-color;
   border-radius: 5px;
   background: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
   text-align: center;
-  color: var(--dark);
+  color: $text-color-light;
+  font-size: 12px;
   cursor: pointer;
 }
 
 .button:hover,
-.button:active {
-  background: lightgray;
+.button:active,
+.button--active {
+  color: $text-color;
+  background: $button-active-color;
 }
 
 .button--primary {
-  background: var(--accent);
+  background: $primary-color;
   color: white;
-  border-color: var(--accent);
-}
-
-.button--active {
-  background: lightgray;
+  border-color: $primary-color;
 }
 
 .button--inline {

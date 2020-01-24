@@ -1,6 +1,8 @@
 <template>
-  <div class="card">
-    <input-form :block_id="`${ block_id }_form`"></input-form>
+  <div class="offset">
+    <div class="card">
+      <input-form :block_id="`${ block_id }_form`"></input-form>
+    </div>
   </div>
 </template>
 
