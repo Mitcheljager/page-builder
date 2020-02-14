@@ -49,12 +49,13 @@ Vue.mixin({
       if (this.$root.blockSettings[key] == value) return true
       return false
     },
-    setSelected(content_key, type) {
+    setSelected(content_key, type, group = "") {
       this.resetSelected()
 
       setTimeout(() => {
         this.$root.selectedKey = content_key
         this.$root.selectedType = type
+        this.$root.selectedGroup = group
 
         const sidebar = this.getRootElements("sidebar")
         sidebar.activeMenu = "selected"
@@ -65,6 +66,7 @@ Vue.mixin({
     resetSelected() {
       this.$root.selectedKey = ""
       this.$root.selectedType = ""
+      this.$root.selectedGroup = ""
 
       this.getRootElements("sidebar").activeMenu = "block"
 
@@ -101,6 +103,7 @@ new Vue({
     blockSettings: { },
     blockStyle: "simple",
     selectedKey: "",
-    selectedType: ""
+    selectedType: "",
+    selectedGroup: ""
   }
 }).$mount("#app")

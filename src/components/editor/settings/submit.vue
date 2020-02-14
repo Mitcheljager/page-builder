@@ -1,31 +1,24 @@
 <template>
-  <div>
-    <h3>Button settings</h3>
-
-    <label class="sidebar-item">
-      Button Label
-      <input type="text" ref="button-label" :value="label">
+  <div :data-content-key="content_key">
+    <label class="inline-form-group">
+      {{ options["form_label"] || "Submit" }}
+      <input type="text" ref="button-label" :value="label" class="inline-input" @input="reflectChange()">
     </label>
-
-    <div class="button button--primary" @click="saveButton()">Save</div>
-
-    <div class="button" @click="resetSelected()">Cancel</div>
   </div>
 </template>
 
 <script>
   export default {
-    props: [],
+    props: ["content_key", "options"],
     data() {
       return {
-        content_key: this.$root.selectedKey,
-        label: this.getBlockSetting(this.content_key + "_label") || ""
+        label: this.getBlockSetting(this.content_key + "_label") || this.options["default_label"]
       }
     },
     mounted() {
     },
     methods: {
-      saveButton() {
+      reflectChange() {
         this.label = this.$refs["button-label"].value
         this.setBlockSetting(this.content_key + "_label", this.label)
       }

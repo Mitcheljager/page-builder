@@ -33,8 +33,25 @@ label {
   margin-bottom: .25rem;
 }
 
+input.inline-input {
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
 .form-group {
   padding: 0;
+}
+
+.inline-form-group {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  grid-gap: 1rem;
+  padding: .75rem 1rem;
+  margin: 0;
+  font-size: 12px;
+  color: $text-color-light;
+  text-align: right;
 }
 
 .form-columns {

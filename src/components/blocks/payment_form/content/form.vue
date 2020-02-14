@@ -23,12 +23,26 @@
 
       <editable-checkbox
         :content_key="`${ block_id }_accept_terms`"
-        default_label="Check me to accept terms"></editable-checkbox>
+        default_label="Check me to accept terms"
+        data-belongs-to-content-group="Subscription Box Checkboxes"
+        data-content-group-label="Accept"></editable-checkbox>
 
       <editable-submit
         :content_key="`${ block_id }_submit`"
-        default_label="Submit"></editable-submit>
+        default_label="Submit"
+        data-belongs-to-content-group="Subscription Box Content"
+        data-content-group-label="Submit button"></editable-submit>
     </form>
+
+    <em>
+      <small>
+        <editable-text
+          :content_key="`${ block_id }_fineprint`"
+          default_label="We will not use your data for naughty stuff."
+          data-belongs-to-content-group="Subscription Box Content"
+          data-content-group-label="Fine print"></editable-text>
+      </small>
+    </em>
   </div>
 </template>
 

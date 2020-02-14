@@ -1,9 +1,6 @@
 <template>
   <div
-    contenteditable
     :class="active ? 'is-active' : ''"
-    @focusin="active = true"
-    @focusout="active = false"
     v-html="getBlockSetting(content_key + '_label', default_label)"></div>
 </template>
 

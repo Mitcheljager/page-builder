@@ -8,7 +8,7 @@
     <transition-group name="settings-fade">
       <theme-settings key="theme-settings" v-if="activeMenu == 'theme'"></theme-settings>
       <theme-edit-settings key="theme-edit-settings" v-if="activeMenu == 'theme-edit'"></theme-edit-settings>
-      
+
       <div key="selected-settings" :is="$root.selectedType + 'Settings'" v-if="activeMenu == 'selected'"></div>
       <div key="block-settings" :is="$root.currentlyActiveBlockType + 'Settings'" v-if="activeMenu == 'block'"></div>
     </transition-group>
@@ -23,11 +23,7 @@
   import PaymentFormSettings from "./settings/payment_form"
   import ThemeSettings from "./settings/theme"
   import ThemeEditSettings from "./settings/theme_edit"
-  import ButtonSettings from "./settings/button"
-  import InputSettings from "./settings/input"
-  import SelectSettings from "./settings/select"
-  import CheckboxSettings from "./settings/checkbox"
-  import SubmitSettings from "./settings/submit"
+  import ContentGroupSettings from "./settings/content_group"
 
   export default {
     components: {
@@ -37,11 +33,7 @@
       PaymentFormSettings,
       ThemeSettings,
       ThemeEditSettings,
-      ButtonSettings,
-      InputSettings,
-      CheckboxSettings,
-      SelectSettings,
-      SubmitSettings
+      ContentGroupSettings
     },
     props: [],
     data() {

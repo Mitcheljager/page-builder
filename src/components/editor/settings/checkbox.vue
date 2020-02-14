@@ -1,37 +1,30 @@
 <template>
-  <div>
-    <h3>Select settings</h3>
-
-    <label class="sidebar-item">
-      Input Label
-      <input type="text" ref="input-label" :value="label">
+  <div :data-content-key="content_key">
+    <label class="inline-form-group">
+      {{ options["form_label"] || "Label" }} label
+      <input type="text" ref="input-label" :value="label" class="inline-input" @input="reflectChange()">
     </label>
 
-    <label class="sidebar-item">
-      Input Description
-      <input type="text" ref="input-description">
+    <label class="inline-form-group">
+      <span>{{ options["form_label"] || "Description" }} description <em>(Optional)</em></span>
+      <input type="text" ref="input-description" class="inline-input" @input="reflectChange()">
     </label>
-
-    <div class="button button--primary" @click="saveButton()">Save</div>
-
-    <div class="button" @click="resetSelected()">Cancel</div>
   </div>
 </template>
 
 <script>
   export default {
-    props: [],
+    props: ["content_key", "options"],
     data() {
       return {
-        content_key: this.$root.selectedKey,
-        label: this.getBlockSetting(this.content_key + "_label") || "",
-        description: this.getBlockSetting(this.content_key + "_placeholder") || ""
+        label: this.getBlockSetting(this.content_key + "_label") || this.options["default_label"],
+        description: this.getBlockSetting(this.content_key + "_description") || this.options["default_description"],
       }
     },
     mounted() {
     },
     methods: {
-      saveButton() {
+      reflectChange() {
         this.label = this.$refs["input-label"].value
         this.description = this.$refs["input-description"].value
 

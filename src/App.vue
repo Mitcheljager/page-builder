@@ -21,7 +21,7 @@
   import { EventBus } from "./components/event_bus"
   import Sidebar from "./components/editor/sidebar"
   import Block from "./components/block.vue"
-  import _ from "lodash"
+  import { debounce } from "lodash"
 
   export default {
     name: "app",
@@ -43,7 +43,7 @@
       }
     },
     watch: {
-      "$root.selectedKey": _.debounce(function(value) {
+      "$root.selectedKey": debounce(function(value) {
         this.highlightActive = this.$root.selectedKey != ''
       }, 10)
     }
