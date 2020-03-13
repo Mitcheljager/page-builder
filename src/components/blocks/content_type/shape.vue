@@ -23,10 +23,10 @@
     },
     computed: {
       height() {
-        return this.getBlockSetting(this.content_key + "_size", 40)
+        return this.getBlockSetting(this.content_key + "_size", 100)
       },
       shape() {
-        return this.getBlockSetting(this.content_key + "_" + this.position, "flat")
+        return this.getBlockSetting(this.content_key + "_" + this.position, "slant")
       }
     },
     mounted() {

@@ -1,5 +1,5 @@
 <template>
-  <section class="block" @click="swapActiveBlock()">
+  <section class="block" :class="`block--${ type }`" @click="swapActiveBlock()">
     <shape :content_key="block_id + '_shape'" v-if="isBackgroundEnabled" position="top"></shape>
 
     <div v-bind:is="type" :type="type" :block_id="block_id" :style="`color: var(--${textColor})`"></div>

@@ -1,7 +1,6 @@
 <template>
   <div @click="toggleSettings()" :class="active ? 'is-highlighted' : ''" class="form-group">
     <div
-      class="button button--inline"
       :class="active ? 'is-highlighted' : ''"
       v-html="getBlockSetting(content_key + '_label', default_label)"></div>
   </div>
@@ -33,7 +32,7 @@
     methods: {
       toggleSettings() {
         if (this.active) return
-        
+
         this.setSelected(this.content_key, "submit")
         this.hightlightMe()
       },

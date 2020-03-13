@@ -28,6 +28,7 @@
         data-content-group-label="Accept"></editable-checkbox>
 
       <editable-submit
+        class="button button--block"
         :content_key="`${ block_id }_submit`"
         default_label="Submit"
         data-belongs-to-content-group="Subscription Box Content"
@@ -94,5 +95,24 @@
 
   .form-group {
     margin-bottom: 1rem;
+  }
+
+  .button {
+    display: block;
+    padding: .75rem;
+    background: var(--dark);
+    text-align: center;
+    border-radius: 0;
+    border: 0;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+      background: var(--dark);
+      color: white;
+    }
   }
 </style>

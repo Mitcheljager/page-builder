@@ -29,13 +29,21 @@ h2 {
   margin: 0 auto;
 }
 
+.position-relative {
+  position: relative;
+}
+
+.z-1 {
+  z-index: 1;
+}
+
 .offset {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
 .top-offset {
-  padding-top: 3rem;
+  padding-top: 5rem;
 }
 
 .bg-accent {
